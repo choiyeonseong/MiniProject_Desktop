@@ -134,7 +134,7 @@
             <Button x:Name="BtnLogOut" 
                     Grid.Column="7" 
                     Content="로그아웃" FontSize="14" 
-                    Background="DarkSlateBlue" 
+                    Background="gray" 
                     Foreground="White"
                     Margin="5,10">
                 <Button.ContentTemplate>
