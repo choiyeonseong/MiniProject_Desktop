@@ -16,16 +16,18 @@ namespace WpfSMSApp.View
         {
             InitializeComponent();
             Commons.LOGGER.Info("LoginView 초기화.");
-
         }
 
         private async void BtnCancel_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var result = await this.ShowMessageAsync("종료","프로그램 종료할까요?",
-                MessageDialogStyle.AffirmativeAndNegative,null); // 비동기
+            var result = await this.ShowMessageAsync("종료", "프로그램 종료할까요?",
+                MessageDialogStyle.AffirmativeAndNegative, null); // 비동기
 
             if (result == MessageDialogResult.Affirmative)
+            {
+                Commons.LOGGER.Info("프로그램 종료.");
                 Application.Current.Shutdown(); // 프로그램 종료
+            }
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -48,8 +50,8 @@ namespace WpfSMSApp.View
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-           LblResult.Visibility = Visibility.Hidden;// 결과 레이블 숨김
-           
+            LblResult.Visibility = Visibility.Hidden;// 결과 레이블 숨김
+
             if (string.IsNullOrEmpty(TxtUserEmail.Text) || string.IsNullOrEmpty(TxtPassword.Password))
             {
                 LblResult.Visibility = Visibility.Visible;
