@@ -11,7 +11,19 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Theme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
+                
+                
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="{x:Type Window}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="NanumGothic"/>
+            </Style>
+
+            <Style TargetType="{x:Type Page}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="NanumGothic"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

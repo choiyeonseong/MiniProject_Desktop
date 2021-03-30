@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,6 +16,7 @@ namespace WpfSMSApp.View
         public LoginView()
         {
             InitializeComponent();
+            Style = (Style)FindResource(typeof(Window));
             Commons.LOGGER.Info("LoginView 초기화.");
         }
 
@@ -64,6 +66,11 @@ namespace WpfSMSApp.View
             {
                 var email = TxtUserEmail.Text;
                 var password = TxtPassword.Password;
+
+                // 패스워드 암호화
+                var mdHash = MD5.Create();
+                password = Commons.GetMd5Hash(mdHash, password);
+
                 var isOurUser = Logic.DataAccess.GetUsers()
                      .Where(u => u.UserEmail.Equals(email) && u.UserPassword.Equals(password) && u.UserActivated == true).Count();
 
@@ -87,7 +94,6 @@ namespace WpfSMSApp.View
                 // TODO:예외처리
                 Commons.LOGGER.Error($"예외 발생 : {ex}.");
                 await this.ShowMessageAsync("예외", $"예외발생: {ex}");
-
             }
         }
     }

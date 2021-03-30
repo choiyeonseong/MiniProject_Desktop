@@ -35,8 +35,8 @@
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="{Binding}" Margin="5,0" VerticalAlignment="Center" />
                             <Image Source="/Resources/unlock.png" Width="24" Height="24"/>
+                            <TextBlock Text="{Binding}" Margin="5,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>
@@ -49,8 +49,8 @@
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="{Binding}" Margin="5,0" VerticalAlignment="Center" />
                             <Image Source="/Resources/bansign.png" Width="24" Height="24"/>
+                            <TextBlock Text="{Binding}" Margin="5,0" VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>

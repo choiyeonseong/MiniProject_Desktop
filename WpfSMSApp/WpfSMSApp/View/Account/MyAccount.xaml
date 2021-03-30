@@ -16,7 +16,6 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Right"/>
         </Style>
-
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="10, 0"/>
@@ -38,7 +37,7 @@
 
         <!-- 제목 입력 시작 -->
         <Label Grid.Row="0" Grid.Column="1" 
-               Content="내 정보" FontSize="30" FontWeight="ExtraBold"
+               Content="계정 정보" FontSize="30" FontWeight="ExtraBold"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Left"/>
         <!-- 제목 입력 끝 -->
