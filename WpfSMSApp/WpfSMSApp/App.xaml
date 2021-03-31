@@ -10,8 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Theme setting -->
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
-                
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Olive.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
 
@@ -23,6 +22,12 @@
             <Style TargetType="{x:Type Page}">
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="FontFamily" Value="NanumGothic"/>
+            </Style>
+
+            <Style x:Key="ButtonStyle" TargetType="{x:Type Button}"  BasedOn="{StaticResource MahApps.Styles.Button}">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="NanumSqureRound"/>
+                <Setter Property="FontWeight" Value="Medium"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

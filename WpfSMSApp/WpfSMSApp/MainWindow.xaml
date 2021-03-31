@@ -14,6 +14,11 @@
     Activated="MetroWindow_Activated"
     WindowStartupLocation="CenterScreen">
     
+    <Window.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+        </Style>
+    </Window.Resources>
+    
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
             <Button x:Name="BtnLoginedId"/>
@@ -36,7 +41,7 @@
             <Button x:Name="BtnBooks" 
                     Grid.Column="0" 
                     Content="입고" FontSize="14" 
-                    Background="RoyalBlue" 
+                    Background="#759161" 
                     Foreground="White"
                     Margin="5,10">
                 <Button.ContentTemplate>
@@ -51,7 +56,7 @@
             <Button x:Name="BtnProducts" 
                     Grid.Column="1" 
                     Content="제품" FontSize="14" 
-                    Background="LightSkyBlue" 
+                    Background="#87AB7F" 
                     Foreground="White"
                     Margin="5,10">
                 <Button.ContentTemplate>
@@ -66,7 +71,7 @@
             <Button x:Name="BtnBookOut" 
                     Grid.Column="2" 
                     Content="출고" FontSize="14" 
-                    Background="DodgerBlue" 
+                    Background="#90B2A0" 
                     Foreground="White"
                     Margin="5,10">
                 <Button.ContentTemplate>
@@ -81,7 +86,7 @@
             <Button x:Name="BtnStore" 
                     Grid.Column="3" 
                     Content="창고" FontSize="14" 
-                    Background="CadetBlue" 
+                    Background="#A8B684" 
                     Foreground="White"
                     Margin="5,10">
                 <Button.ContentTemplate>
@@ -96,7 +101,7 @@
             <Button x:Name="BtnSetting" 
                     Grid.Column="4" 
                     Content="설정" FontSize="14" 
-                    Background="MidnightBlue" 
+                    Background="#687844" 
                     Foreground="White"
                     Margin="5,10">
                 <Button.ContentTemplate>
@@ -111,7 +116,7 @@
             <Button x:Name="BtnUser" 
                     Grid.Column="5" 
                     Content="사용자" FontSize="14" 
-                    Background="LightSteelBlue" 
+                    Background="#A1B88D" 
                     Foreground="White"
                     Margin="5,10" Click="BtnUser_Click">
                 <Button.ContentTemplate>
@@ -126,7 +131,7 @@
             <Button x:Name="BtnAccount" 
                     Grid.Column="6" 
                     Content="계정" FontSize="14" 
-                    Background="CornflowerBlue" 
+                    Background="#96B496" 
                     Foreground="White"
                     Margin="5,10"
                     Click="BtnAccount_Click">

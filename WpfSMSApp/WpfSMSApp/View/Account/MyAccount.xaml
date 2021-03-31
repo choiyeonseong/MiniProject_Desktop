@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:WpfSMSApp.View.Account"
     mc:Ignorable="d" 
     d:DesignHeight="630" d:DesignWidth="1200"
@@ -20,6 +21,12 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="10, 0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5,10"/>
+            <Setter Property="Background" Value="#427452"/>
+            <Setter Property="Foreground" Value="white"/>
         </Style>
     </Page.Resources>
     
@@ -45,8 +52,16 @@
         <!-- 버튼영역 시작 -->
         <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
             <Button x:Name="BtnEditMyAccount" 
-                    Height="50" Margin="5,10" Background="SlateBlue"
-                    Content="계정정보 수정" FontSize="14" Foreground="White" Click="BtnEditMyAccount_Click">
+                    Content="계정정보 수정"
+                    Click="BtnEditMyAccount_Click">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="AccountEdit" Width="24" Height="24"/>
+                            <TextBlock Text="{Binding}" Margin="25, 0" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
             </Button>
         </StackPanel>
         <!-- 버튼영역 끝 -->

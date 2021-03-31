@@ -61,7 +61,7 @@ namespace WpfSMSApp
             catch (Exception ex)
             {
                 Commons.LOGGER.Error($"예외 발생 BtnAccount_Click: {ex}");
-                await this.ShowMessageAsync($"예외", "예외발생: {ex}");
+                await this.ShowMessageAsync("예외", $"예외발생: {ex}");
             }
         }
 
@@ -74,7 +74,7 @@ namespace WpfSMSApp
             catch (Exception ex)
             {
                 Commons.LOGGER.Error($"예외 발생 BtnUser_Click: {ex}");
-                await this.ShowMessageAsync($"예외", "예외발생: {ex}");
+                await this.ShowMessageAsync("예외", $"예외발생: {ex}");
             }
         }
     }

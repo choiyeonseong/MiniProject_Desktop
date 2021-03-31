@@ -1,5 +1,5 @@
 ﻿<Page 
-    x:Class="WpfSMSApp.View.Account.EditAccount"
+    x:Class="WpfSMSApp.View.User.AddUser"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:WpfSMSApp.View.Account"
     mc:Ignorable="d" 
     d:DesignHeight="630" d:DesignWidth="1200"
-    Title="EditAccount" Loaded="Page_Loaded">
+    Title="AddUser" Loaded="Page_Loaded">
 
     <Page.Resources>
         <Style TargetType="Label"> <!-- {x:Type Lable} -->
@@ -38,7 +38,7 @@
 
         <!-- 제목 입력 시작 -->
         <Label Grid.Row="0" Grid.Column="1" 
-               Content="내 정보 수정" FontSize="30" FontWeight="ExtraBold"
+               Content="사용자 정보 입력" FontSize="30" FontWeight="ExtraBold"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Left"/>
         <!-- 제목 입력 끝 -->
@@ -74,7 +74,7 @@
             <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TxtUserID" Text="UserID"/>
             
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                <TextBox x:Name="TxtUserIdentityNumber" Margin="3" Width="200" Text="TEST" FontSize="14" IsReadOnly="True" />
+                <TextBox x:Name="TxtUserIdentityNumber" Margin="3" Width="200" Text="TEST" FontSize="14" />
                 <TextBlock x:Name="LblUserIdentityNumber" Text="ErrorMessage" Foreground="OrangeRed"/>
             </StackPanel>
 
@@ -119,11 +119,11 @@
         <!-- 버튼영역 시작 -->
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                     Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="BtnUpdate" 
+            <Button x:Name="BtnAdd" 
                     Height="50" Width="120" 
                     Margin="10, 0"
-                    Content="수정" FontSize="14" 
-                    Background="#427452" Click="BtnUpdate_Click">
+                    Content="입력" FontSize="14" 
+                    Background="#427452" Click="BtnAdd_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" >
