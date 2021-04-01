@@ -103,7 +103,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <RadioButton x:Name="RdoAll" Content="모두" Margin="5,0" FontSize="14" Checked="RdoAll_Checked"></RadioButton>
                 <RadioButton x:Name="RdoActive" Content="활성" Margin="5,0" FontSize="14" Checked="RdoActive_Checked"></RadioButton>
-                <RadioButton x:Name="RdlDeactive" Content="비활성" Margin="5,0" FontSize="14" Checked="RdlDeactive_Checked"></RadioButton>
+                <RadioButton x:Name="RdoDeactive" Content="비활성" Margin="5,0" FontSize="14" Checked="RdoDeactive_Checked"></RadioButton>
             </StackPanel>
 
             <DataGrid x:Name="GrdData" Grid.Row="1"

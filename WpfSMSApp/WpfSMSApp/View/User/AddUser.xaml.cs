@@ -40,7 +40,7 @@ namespace WpfSMSApp.View.User
             }
             catch (Exception ex)
             {
-                Commons.LOGGER.Error($"예외발생 EditAccount Loaded: {ex}");
+                Commons.LOGGER.Error($"예외발생 AddUser Loaded: {ex}");
                 throw ex;
             }
         }

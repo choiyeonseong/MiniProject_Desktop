@@ -26,11 +26,42 @@ namespace WpfSMSApp.Logic
         /// </summary>
         /// <param name="user"></param>
         /// <returns> 0 또는 1 이상 </returns>
-        internal static int SetUsers(User user)
+        public static int SetUsers(User user)
         {
             using (var ctx = new SMSEntities())
             {
                 ctx.User.AddOrUpdate(user);
+                return ctx.SaveChanges();   // commit
+            }
+        }
+
+        public static List<Stock> GetStocks()
+        {
+            List<Stock> stocks;
+
+            using (var ctx = new SMSEntities())
+            {
+                stocks = ctx.Stock.ToList();    // SELECT * FROM Store
+            }
+            return stocks;
+        }
+
+        public static List<Store> GetStores()
+        {
+            List<Store> stores;
+
+            using (var ctx = new SMSEntities())
+            {
+                stores = ctx.Store.ToList();    // SELECT * FROM Store
+            }
+            return stores;
+        }
+
+        public static int SetStores(Store store)
+        {
+            using (var ctx = new SMSEntities())
+            {
+                ctx.Store.AddOrUpdate(store);
                 return ctx.SaveChanges();   // commit
             }
         }

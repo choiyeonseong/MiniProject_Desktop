@@ -78,35 +78,96 @@ namespace WpfSMSApp.View.User
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = "PDF File(*.pdf)|*.pdf";
             saveDialog.FileName = "";
-            if (saveDialog.ShowDialog()==true)
+            if (saveDialog.ShowDialog() == true)
             {
                 // PDF 변환
                 try
                 {
-                    iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
+                    // 0.PDF 사용 폰트 설정
+                    string nanumPath = Path.Combine(Environment.CurrentDirectory, @"NanumGothic.ttf");
+                    BaseFont nanumBase = BaseFont.CreateFont(nanumPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    var nanumTitle = new iTextSharp.text.Font(nanumBase, 20f);  // 20 타이틀용 나눔폰트 
+                    var nanumContent = new iTextSharp.text.Font(nanumBase, 12f);  // 12 내용 나눔폰트 
+
+                    //iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12);
                     string pdfFilePath = saveDialog.FileName;
 
+                    // 1. PDF 객체 생성
                     iTextSharp.text.Document pdfDoc = new Document(PageSize.A4);
 
-                    // 1. PDF 객체 생성
-                    PdfPTable pdfTable = new PdfPTable(GrdData.Columns.Count);
-
                     // 2. PDF 내용 만들기
+                    Paragraph title = new Paragraph("부경대 재고관리시스템(SMS)\n", nanumTitle);
+                    Paragraph subTitle = new Paragraph($"사용자리스트 exported : {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\n\n", nanumContent);
 
-                    Paragraph title = new Paragraph($"부경대 Stock Management System : {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                    PdfPTable pdfTable = new PdfPTable(GrdData.Columns.Count);
+                    pdfTable.WidthPercentage = 100; // 전체 사이즈 다 사용
+
+                    // 그리드 헤더 작업
+                    foreach (DataGridColumn column in GrdData.Columns)
+                    {
+                        PdfPCell cell = new PdfPCell(new Phrase(column.Header.ToString(), nanumContent));
+                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+
+                        pdfTable.AddCell(cell);
+                    }
+
+                    // 각 셀의 사이즈 조정
+                    float[] columnsWidth = new float[] { 5f, 15f, 10f, 15f, 30f, 12f, 10f };
+                    pdfTable.SetWidths(columnsWidth);
+
+                    // 그리드 Row 작업
+                    foreach (var item in GrdData.Items)
+                    {
+                        if (item is Model.User)
+                        {
+                            var temp = item as Model.User;
+                            // UserId
+                            PdfPCell cell = new PdfPCell(new Phrase(temp.UserID.ToString(), nanumContent));
+                            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                            pdfTable.AddCell(cell);
+                            // UserIdentityNumber
+                            cell = new PdfPCell(new Phrase(temp.UserIdentityNumber.ToString(), nanumContent));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(cell);
+                            // UserSurname
+                            cell = new PdfPCell(new Phrase(temp.UserSurname.ToString(), nanumContent));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(cell);
+                            // UserName
+                            cell = new PdfPCell(new Phrase(temp.UserName.ToString(), nanumContent));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(cell);
+                            // UserEmail
+                            cell = new PdfPCell(new Phrase(temp.UserEmail.ToString(), nanumContent));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(cell);
+                            // UserAdmin
+                            cell = new PdfPCell(new Phrase(temp.UserAdmin.ToString(), nanumContent));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(cell);
+                            // UserActivated
+                            cell = new PdfPCell(new Phrase(temp.UserActivated.ToString(), nanumContent));
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(cell);
+                        }
+                    }
 
                     // 3. PDF 파일 생성
-                    using (FileStream stream = new FileStream(pdfFilePath,FileMode.OpenOrCreate))
+                    using (FileStream stream = new FileStream(pdfFilePath, FileMode.OpenOrCreate))
                     {
                         PdfWriter.GetInstance(pdfDoc, stream);
                         pdfDoc.Open();
 
                         // 2번에서 만든 내용 추가
                         pdfDoc.Add(title);
+                        pdfDoc.Add(subTitle);
+                        pdfDoc.Add(pdfTable);
 
                         pdfDoc.Close();
                         stream.Close(); // option
                     }
+
+                    Commons.ShowMessageAsync("PDF 변환", "PDF 익스포트 성공했습니다.");
                 }
                 catch (Exception ex)
                 {
@@ -151,13 +212,13 @@ namespace WpfSMSApp.View.User
             }
         }
 
-        private void RdlDeactive_Checked(object sender, RoutedEventArgs e)
+        private void RdoDeactive_Checked(object sender, RoutedEventArgs e)
         {
             try
             {
                 List<Model.User> users = new List<Model.User>();
 
-                if (RdlDeactive.IsChecked == true)
+                if (RdoDeactive.IsChecked == true)
                 {
                     users = Logic.DataAccess.GetUsers().Where(u => u.UserActivated == false).ToList();
                 }
