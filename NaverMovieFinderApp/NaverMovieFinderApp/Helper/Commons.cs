@@ -4,6 +4,7 @@ using NLog;
 using System;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -60,6 +61,37 @@ namespace NaverMovieFinderApp
                 Console.WriteLine($"예외발생: {ex}");
             }
             return result;
+        }
+
+        /// <summary>
+        /// HTML 태그 삭제하는 정규표현식
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string StripHTMLTag(string text)
+        {
+            return Regex.Replace(text, @"<(.|\n)*?>", "");
+        }
+
+        /// <summary>
+        /// |를 ,로 바꾸고 마지막 , 삭제
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string StripPipe(string text)
+        {
+            /* text = text.Replace("|", ",");
+
+               if (text.EndsWith(","))
+               {
+                   text = text.Substring(0, text.Length - 1);
+               }
+               return text; */
+
+            if (string.IsNullOrEmpty(text)) return "";  // 배우나 감독이 없는 경우
+            
+                return text.Substring(0, text.LastIndexOf("|")).Replace("|", ", ");
+
         }
     }
 }
