@@ -3,6 +3,7 @@ using NaverMovieFinderApp.Model;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -211,7 +212,10 @@ namespace NaverMovieFinderApp
 
         private void BtnNaverMovieLink_Click(object sender, RoutedEventArgs e)
         {
+            var movie = GrdData.SelectedItem as MovieItem;
 
+            Process.Start(new ProcessStartInfo(movie.Link));
+            e.Handled = true;
         }
     }
 }
