@@ -188,6 +188,7 @@
       <DependentUpon>FavoriteMovieModel.edmx</DependentUpon>
       <LastGenOutput>FavoriteMovieModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="naver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

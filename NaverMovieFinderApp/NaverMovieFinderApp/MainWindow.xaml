@@ -154,8 +154,8 @@
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                            <TextBlock Text="{Binding}" Margin="10,0" Foreground="White"/>
-                            <iconPacks:PackIconForkAwesome Kind="Link" Foreground="Blue" />
+                            <TextBlock Text="{Binding}" Margin="10,0" Foreground="White" VerticalAlignment="Center"/>
+                            <Image Source="/naver.png" Width="24" Height="24" />
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>
