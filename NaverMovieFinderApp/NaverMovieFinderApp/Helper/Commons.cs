@@ -12,6 +12,12 @@ namespace NaverMovieFinderApp
 {
     class Commons
     {
+        // 즐겨찾기 여부 플래그
+        public static bool IsFavorite = false;
+
+        // 즐겨찾기 삭제와 보기 플래그
+        public static bool IsDelete = false;
+
         // NLog 정적 인스턴스 생성
         public static readonly Logger LOGGER = LogManager.GetCurrentClassLogger();
 
@@ -70,7 +76,9 @@ namespace NaverMovieFinderApp
         /// <returns></returns>
         public static string StripHTMLTag(string text)
         {
-            return Regex.Replace(text, @"<(.|\n)*?>", "");
+            text = Regex.Replace(text, @"<(.|\n)*?>", "");  // HTML 태그
+            text = Regex.Replace(text, "&amp;", "&");       // &amp;
+            return text;
         }
 
         /// <summary>
@@ -89,9 +97,8 @@ namespace NaverMovieFinderApp
                return text; */
 
             if (string.IsNullOrEmpty(text)) return "";  // 배우나 감독이 없는 경우
-            
-                return text.Substring(0, text.LastIndexOf("|")).Replace("|", ", ");
 
+            return text.Substring(0, text.LastIndexOf("|")).Replace("|", ", ");
         }
     }
 }
