@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaverMovieFinderApp", "Nave
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleNaverMovieFinder", "ConsoleNaverMovieFinder\ConsoleNaverMovieFinder.csproj", "{62BD4743-0411-4ED7-9504-E3280D1670E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleKobisApp", "ConsoleKobisApp\ConsoleKobisApp.csproj", "{43F76569-65E8-4054-9CC0-BDDF465A1672}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{62BD4743-0411-4ED7-9504-E3280D1670E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62BD4743-0411-4ED7-9504-E3280D1670E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62BD4743-0411-4ED7-9504-E3280D1670E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F76569-65E8-4054-9CC0-BDDF465A1672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F76569-65E8-4054-9CC0-BDDF465A1672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F76569-65E8-4054-9CC0-BDDF465A1672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F76569-65E8-4054-9CC0-BDDF465A1672}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

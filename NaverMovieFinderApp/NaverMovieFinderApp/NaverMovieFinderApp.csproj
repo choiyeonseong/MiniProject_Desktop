@@ -214,6 +214,7 @@
       <DependentUpon>FavoriteMovieModel.edmx</DependentUpon>
       <LastGenOutput>FavoriteMovieModel.cs</LastGenOutput>
     </Content>
+    <Content Include="SQL\OpenApiLab.sql" />
     <Resource Include="naver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
