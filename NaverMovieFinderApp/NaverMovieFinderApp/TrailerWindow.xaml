@@ -7,7 +7,7 @@
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:local="clr-namespace:NaverMovieFinderApp"
     mc:Ignorable="d"
-    Title="TrailerWindow" Height="350" Width="800" Loaded="MetroWindow_Loaded">
+    Title="TrailerWindow" Height="350" Width="800" Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -20,12 +20,12 @@
 
         <Label x:Name="LblMovieName" FontSize="16" Margin="5" Style="{StaticResource MahApps.Styles.Label}"/>
 
-        <ListView x:Name="LsvYoutubeSearch" Grid.Row="1" Grid.Column="0">
+        <ListView x:Name="LsvYoutubeSearch" Grid.Row="1" Grid.Column="0" MouseDoubleClick="LsvYoutubeSearch_MouseDoubleClick" >
             <!--<ListView.ItemContainerStyle></ListView.ItemContainerStyle>-->
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="섬네일">
+                    <GridViewColumn Header="섬네일" Width="100" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding Thumbnail}"/>

@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using NaverMovieFinderApp.Model;
 using Newtonsoft.Json.Linq;
 using System;
@@ -367,6 +368,11 @@ namespace NaverMovieFinderApp
             }
 
             this.DataContext = movieItems;
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }
