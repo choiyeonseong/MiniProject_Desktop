@@ -17,6 +17,8 @@ namespace ConsoleKobisApp
             string movieNm = "비밀의 정원";
             string movieCd = "";
 
+            // 영화 진흥 위원회 API
+            // 포스터 없음ㅠㅠ
             string openApiUrl = $@"http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key={key}&movieNm={movieNm}";
 
             WebRequest request = WebRequest.Create(openApiUrl);
@@ -32,17 +34,16 @@ namespace ConsoleKobisApp
                 var obj = JObject.Parse(data);
                 
                 Console.WriteLine("============ List ============");
-                
                 Console.WriteLine(obj);
 
-                var list = obj["movieListResult"];
-
                 Console.WriteLine("============ Item ============");
-
+                var list = obj["movieListResult"];
+                
                 foreach (var item in list["movieList"])
                 {
                     Console.WriteLine(item["movieNm"]);
                     Console.WriteLine(item["movieCd"]);
+                    Console.WriteLine(item["imgsrc"]);
                     movieCd = item["movieCd"].ToString();
                 }
             }
