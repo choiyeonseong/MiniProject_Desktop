@@ -1,6 +1,9 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.Win32;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,15 +31,12 @@ namespace WpfSMSApp.View.Store
                 // Store 테이블 데이터 읽어와야함
                 List<Model.Store> stores = new List<Model.Store>();
                 List<Model.StockStore> stockStores = new List<Model.StockStore>();
-                List<Model.Stock> stocks = new List<Model.Stock>();
-
                 stores = Logic.DataAccess.GetStores();
-                stocks = Logic.DataAccess.GetStocks();
 
                 // TODO : stores 데이터를 stockStores로 복사
                 foreach (Model.Store item in stores)
                 {
-                    stockStores.Add(new Model.StockStore()
+                    var store = new Model.StockStore()
                     {
                         StoreID = item.StoreID,
                         StoreName = item.StoreName,
@@ -45,7 +45,11 @@ namespace WpfSMSApp.View.Store
                         TagID = item.TagID,
                         BarcodeID = item.BarcodeID,
                         StockQuantity = 0
-                    });
+                    };
+
+                    store.StockQuantity = Logic.DataAccess.GetStocks().Where(t => t.StoreID.Equals(store.StoreID)).Count();
+
+                    stockStores.Add(store);
                 }
 
                 // stockStores를 바인딩
@@ -73,12 +77,89 @@ namespace WpfSMSApp.View.Store
 
         private void BtnEditStore_Click(object sender, RoutedEventArgs e)
         {
+            if (GrdData.SelectedItem == null)
+            {
+                Commons.ShowMessageAsync("창고수정", "수정할 창고를 선택하세요.");
+                return;
+            }
 
+            if (GrdData.SelectedItems.Count > 1)
+            {
+                Commons.ShowMessageAsync("창고수정", "수정할 창고를 하나만 선택하세요.");
+                return;
+            }
+
+            try
+            {
+                var storeId = (GrdData.SelectedItem as Model.Store).StoreID;
+
+                NavigationService.Navigate(new EditStore(storeId));
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnEditStore_Click: {ex}");
+                throw ex;
+            }
         }
 
         private void BtnExportExcel_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Excel File(*.xlsx)|*.xlsx"; // 엑셀 확장자
+            dialog.FileName = "";
+            if (dialog.ShowDialog() == true)
+            {
+                try
+                {
+                    // NPoi 
+                    IWorkbook workbook = new XSSFWorkbook(); // xlsx // new HSSFWorkbook(); // xls(이전버전용)
+                    ISheet sheet = workbook.CreateSheet("SMS StoreList");
 
+                    // 헤더 row 생성
+                    IRow rowHeader = sheet.CreateRow(0);
+                    ICell cell = rowHeader.CreateCell(0);
+                    cell.SetCellValue("순번");
+
+                    cell = rowHeader.CreateCell(1);
+                    cell.SetCellValue("창고명");
+
+                    cell = rowHeader.CreateCell(2);
+                    cell.SetCellValue("창고위치");
+
+                    cell = rowHeader.CreateCell(3);
+                    cell.SetCellValue("재고수");
+
+                    // 데이터 생성
+                    for (int i = 0; i < GrdData.Items.Count; i++)
+                    {
+                        IRow row = sheet.CreateRow(i + 1);
+                        if (GrdData.Items[i] is Model.StockStore)   // 빈값인 경우를 막아줌
+                        {
+                            var stockStore = GrdData.Items[i] as Model.StockStore;
+                            ICell dataCell = row.CreateCell(0);
+                            dataCell.SetCellValue(stockStore.StoreID);
+                            dataCell = row.CreateCell(1);
+                            dataCell.SetCellValue(stockStore.StoreName);
+                            dataCell = row.CreateCell(2);
+                            dataCell.SetCellValue(stockStore.StoreLocation);
+                            dataCell = row.CreateCell(3);
+                            dataCell.SetCellValue(stockStore.StockQuantity);
+                        }
+                    }
+
+                    // 파일저장
+                    using (var fs = new FileStream(dialog.FileName, FileMode.OpenOrCreate, FileAccess.Write))
+                    {
+                        workbook.Write(fs);
+                    }
+
+                    Commons.ShowMessageAsync("엑셀저장", "엑셀 export 성공");
+                }
+                catch (Exception ex)
+                {
+                    Commons.ShowMessageAsync("예외", $"예외발생 : {ex}");
+                }
+            }
         }
     }
 }
