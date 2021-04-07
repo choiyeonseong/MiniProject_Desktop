@@ -16,7 +16,7 @@ namespace WpfSMSApp.View.Store
     public partial class EditStore : Page
     {
         private int StoreID { get; set; }
-        private Model.Store CurrentStore;
+        private Model.Store CurrentStore { get; set; }
         public EditStore()
         {
             InitializeComponent();
@@ -69,8 +69,6 @@ namespace WpfSMSApp.View.Store
             // label 숨김
             LblStoreName.Visibility = LblStoreLocation.Visibility
                 = Visibility.Hidden;
-
-           CurrentStore = new Model.Store();    // 새로운 Store 생성
 
             // textbox 비었는지 확인 (유효성 체크 Validation check)
             isValid = IsValidInput();
