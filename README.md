@@ -1,7 +1,10 @@
 # MiniProject_Desktop
 미니프로젝트 데스크탑 앱
+
     - ERP 재고관리 앱
+    
     - Naver Movie Finder
+
     - Commons.cs
 
 ## ERP 재고관리 앱
@@ -84,7 +87,7 @@ using (FileStream stream = new FileStream(pdfFilePath, FileMode.OpenOrCreate))
 }
 ```
 
-    [UserList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/User)
+[UserList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/User)
 
 - 창고 리스트 보기, 추가, 수정, Excel 익스포트 기능
 
@@ -134,7 +137,7 @@ using (var fs = new FileStream(dialog.FileName, FileMode.OpenOrCreate, FileAcces
 }
 ```
 
-    [StoreList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/Store)
+[StoreList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/Store)
 
 --------------
 
@@ -183,7 +186,7 @@ foreach (var item in json_array)
 this.DataContext = movieItems;
 ```
 
-    [NaverMovieAPI](NaverMovieFinderApp/NaverMovieFinderApp/MainWindow.xaml.cs)
+   [NaverMovieAPI](NaverMovieFinderApp/NaverMovieFinderApp/MainWindow.xaml.cs)
 
 - DB를 이용해서 즐겨찾기 추가, 삭제, 보기 기능 구현
 
@@ -229,7 +232,7 @@ foreach (var item in response.Items)
 }
 ```
 
-    [YoutubeTrailerWindow](NaverMovieFinderApp/NaverMovieFinderApp/TrailerWindow.xaml.cs)
+   [YoutubeTrailerWindow](NaverMovieFinderApp/NaverMovieFinderApp/TrailerWindow.xaml.cs)
 
 --------------
 
