@@ -1,11 +1,10 @@
 # MiniProject_Desktop
+
 미니프로젝트 데스크탑 앱
 
-    - ERP 재고관리 앱
-    
-    - Naver Movie Finder
-
-    - Commons.cs
+- [ERP 재고관리 앱](https://github.com/choiyeonseong/MiniProject_Desktop#erp-%EC%9E%AC%EA%B3%A0%EA%B4%80%EB%A6%AC-%EC%95%B1)
+- [Naver Movie Finder](https://github.com/choiyeonseong/MiniProject_Desktop#naver-movie-finder)
+- [Commons.cs](https://github.com/choiyeonseong/MiniProject_Desktop#commonscs)
 
 ## ERP 재고관리 앱
 
@@ -239,7 +238,7 @@ foreach (var item in response.Items)
 
 ## Commons.cs
 
-#### OpenAPI Request & Response 메소드
+* <h3> OpenAPI Request & Response 메소드 </h3>
 
 ```C#
 public static string GetOpenApiResult(string openApiUrl, string clientID, string clientSecret)
@@ -270,7 +269,7 @@ public static string GetOpenApiResult(string openApiUrl, string clientID, string
 }
 ```
 
-#### 비밀번호 암호화 메소드
+* <h3> 비밀번호 암호화 메소드 </h3>
 
 ```C#
 public static string GetMd5Hash(MD5 md5Hash, string plainStr)
@@ -286,7 +285,7 @@ public static string GetMd5Hash(MD5 md5Hash, string plainStr)
 }
 ```
 
-#### 이메일 정규식 체크 메소드
+* <h3> 이메일 정규식 체크 메소드 </h3>
 
 ```C#
 public static bool IsValidEmail(string email)
@@ -295,7 +294,7 @@ public static bool IsValidEmail(string email)
 }
 ```
 
-#### HTML 태그 삭제 정규식 메소드
+* <h3> HTML 태그 삭제 정규식 메소드 </h3>
 
 ```C#
 public static string StripHTMLTag(string text)
