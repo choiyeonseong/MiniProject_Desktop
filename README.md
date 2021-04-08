@@ -2,9 +2,9 @@
 
 미니프로젝트 데스크탑 앱
 
-- [ERP 재고관리 앱](https://github.com/choiyeonseong/MiniProject_Desktop#erp-%EC%9E%AC%EA%B3%A0%EA%B4%80%EB%A6%AC-%EC%95%B1)
-- [Naver Movie Finder](https://github.com/choiyeonseong/MiniProject_Desktop#naver-movie-finder)
-- [Commons.cs](https://github.com/choiyeonseong/MiniProject_Desktop#commonscs)
+- [ERP 재고관리 앱](#erp-재고관리-앱)
+- [Naver Movie Finder](#naver-movie-finder)
+- [Commons.cs](#commonscs)
 
 ## ERP 재고관리 앱
 
