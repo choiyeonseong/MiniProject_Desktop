@@ -25,6 +25,8 @@
 
     <img src="WpfSMSApp/ref_image/UserList.png" width="80%" height="80%"></img>
     
+    [UserList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/User)
+
 ```C#
 // 0.PDF 사용 폰트 설정
 string nanumPath = Path.Combine(Environment.CurrentDirectory, @"NanumGothic.ttf");
@@ -87,11 +89,12 @@ using (FileStream stream = new FileStream(pdfFilePath, FileMode.OpenOrCreate))
 }
 ```
 
-[UserList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/User)
-
 - 창고 리스트 보기, 추가, 수정, Excel 익스포트 기능
 
     <img src="WpfSMSApp/ref_image/StoreList.png" width="80%" height="80%"></img>
+
+    
+    [StoreList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/Store)
 
 ```C#
 IWorkbook workbook = new XSSFWorkbook(); // .xlsx
@@ -137,8 +140,6 @@ using (var fs = new FileStream(dialog.FileName, FileMode.OpenOrCreate, FileAcces
 }
 ```
 
-[StoreList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/Store)
-
 --------------
 
 ## Naver Movie Finder
@@ -146,6 +147,8 @@ using (var fs = new FileStream(dialog.FileName, FileMode.OpenOrCreate, FileAcces
 - Naver API를 사용하여 영화 정보 조회, 네이버 영화에서 검색 가능하도록 구현
 
     <img src="NaverMovieFinderApp/ref_image/mainwindow.png" width="80%" height="80%"></img>
+
+    [NaverMovieAPI](NaverMovieFinderApp/NaverMovieFinderApp/MainWindow.xaml.cs)
 
 ```C#
 // 사용자 정보 입력
@@ -186,8 +189,6 @@ foreach (var item in json_array)
 this.DataContext = movieItems;
 ```
 
-   [NaverMovieAPI](NaverMovieFinderApp/NaverMovieFinderApp/MainWindow.xaml.cs)
-
 - DB를 이용해서 즐겨찾기 추가, 삭제, 보기 기능 구현
 
     <img src="NaverMovieFinderApp/ref_image/watchlist.png" width="80%" height="80%"></img>
@@ -199,6 +200,8 @@ this.DataContext = movieItems;
 - Youtube API를 사용하여 해당 영화의 티저 재생
 
     <img src="NaverMovieFinderApp/ref_image/youtube.png" width="80%" height="80%"></img>
+
+    [YoutubeTrailerWindow](NaverMovieFinderApp/NaverMovieFinderApp/TrailerWindow.xaml.cs)
 
 ```C#
 var youtubeService = new YouTubeService(
@@ -231,8 +234,6 @@ foreach (var item in response.Items)
     }
 }
 ```
-
-   [YoutubeTrailerWindow](NaverMovieFinderApp/NaverMovieFinderApp/TrailerWindow.xaml.cs)
 
 --------------
 
