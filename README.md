@@ -6,6 +6,8 @@
 - [Naver Movie Finder](#naver-movie-finder)
 - [Commons.cs](#commonscs)
 
+-------
+
 ## ERP 재고관리 앱
 
 - DB에서 사용자 정보를 가져와 로그인 기능 제공
@@ -26,7 +28,10 @@
     
     [UserList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/User)
 
+
 ```C#
+/* PDF Export */
+
 // 0.PDF 사용 폰트 설정
 string nanumPath = Path.Combine(Environment.CurrentDirectory, @"NanumGothic.ttf");
 BaseFont nanumBase = BaseFont.CreateFont(nanumPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -96,6 +101,8 @@ using (FileStream stream = new FileStream(pdfFilePath, FileMode.OpenOrCreate))
     [StoreList](https://github.com/choiyeonseong/MiniProject_Desktop/tree/main/WpfSMSApp/WpfSMSApp/View/Store)
 
 ```C#
+/* Excel Export */
+
 IWorkbook workbook = new XSSFWorkbook(); // .xlsx
 // new HSSFWorkbook(); // .xls(이전버전용)
 ISheet sheet = workbook.CreateSheet("SMS StoreList");
@@ -150,6 +157,8 @@ using (var fs = new FileStream(dialog.FileName, FileMode.OpenOrCreate, FileAcces
     [NaverMovieAPI](NaverMovieFinderApp/NaverMovieFinderApp/MainWindow.xaml.cs)
 
 ```C#
+/* Naver API  */
+
 // 사용자 정보 입력
 string clientID = "API 아이디";
 string clientSecret = "API 비밀번호";
@@ -203,6 +212,8 @@ this.DataContext = movieItems;
     [YoutubeTrailerWindow](NaverMovieFinderApp/NaverMovieFinderApp/TrailerWindow.xaml.cs)
 
 ```C#
+/* Youtube API */
+
 var youtubeService = new YouTubeService(
     new BaseClientService.Initializer()
     {
